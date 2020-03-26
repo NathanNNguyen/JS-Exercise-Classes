@@ -60,6 +60,7 @@ class Person {
   }
 }
 
+
 /*
   TASK 2
     - Write a Car class whose constructor initializes `model` and `milesPerGallon` from arguments.
@@ -150,6 +151,9 @@ class Instructor extends Lambdasian {
   };
   grade(student, subject) {
     return `${student.name} receives a perfect score on ${subject}`
+  };
+  stretch(student) {
+    student.grade = student.grade + 5;
   }
 }
 
@@ -173,18 +177,54 @@ class Student extends Lambdasian {
     super(att);
     this.previousBackground = att.previousBackground;
     this.className = att.className;
-    this.favSubjects = att.favSubjects
+    this.favSubjects = att.favSubjects;
+    this.grade = Math.floor(Math.random() * 100) + 1;
   };
   listSubjects() {
     return `Loving ${this.favSubjects}`;
   };
   PRAssignment(subject) {
-    return `${this.name} has submitted a PR for ${subject}`
+    return `${this.name} has submitted a PR for ${subject}`;
   }
   sprintChallenge(subject) {
-    return `${this.name} has begun sprint challenge on ${subject}`
+    return `${this.name} has begun sprint challenge on ${subject}`;
+  }
+  graduate() {
+    if (this.grade > 70) {
+
+    }
   }
 }
+let newStudent = {
+  previousBackground: 5,
+  className: 2,
+  favSubjects: `Math`,
+  name: `James`,
+  age: 27,
+  location: `Canada`,
+}
+let James = new Student(newStudent);
+
+let newInstructor = {
+  specialty: `Eat`,
+  favLanguage: `English`,
+  catchPhrase: `Hello there!`,
+  name: `Bob`,
+  age: 17,
+  location: `US`,
+}
+
+let Bob = new Instructor(newInstructor);
+
+console.log(James.grade);
+Bob.stretch(James);
+console.log(James.grade);
+Bob.stretch(James);
+console.log(James.grade);
+
+// - Add a graduate method to a student.
+// + This method, when called, will check the grade of the student and see if they're ready to graduate from Lambda School
+// + If the student's grade is above a 70% let them graduate! Otherwise go back to grading their assignments to increase their score.
 
 /*
   TASK 6
